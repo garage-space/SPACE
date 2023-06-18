@@ -64,6 +64,17 @@ namespace IWorld.ContractDefinition
         public virtual List<byte[]> Key { get; set; }
     }
 
+    public partial class DoApplicationFunction : DoApplicationFunctionBase { }
+
+    [Function("doApplication")]
+    public class DoApplicationFunctionBase : FunctionMessage
+    {
+        [Parameter("uint32", "x", 1)]
+        public virtual uint X { get; set; }
+        [Parameter("uint32", "y", 2)]
+        public virtual uint Y { get; set; }
+    }
+
     public partial class EmitEphemeralRecord1Function : EmitEphemeralRecord1FunctionBase { }
 
     [Function("emitEphemeralRecord")]
@@ -759,6 +770,8 @@ namespace IWorld.ContractDefinition
         [Parameter("address", "system", 1)]
         public virtual string System { get; set; }
     }
+
+
 
 
 

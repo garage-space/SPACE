@@ -136,6 +136,34 @@ namespace IWorld.Service
              return ContractHandler.SendRequestAndWaitForReceiptAsync(deleteRecord1Function, cancellationToken);
         }
 
+        public Task<string> DoApplicationRequestAsync(DoApplicationFunction doApplicationFunction)
+        {
+             return ContractHandler.SendRequestAsync(doApplicationFunction);
+        }
+
+        public Task<TransactionReceipt> DoApplicationRequestAndWaitForReceiptAsync(DoApplicationFunction doApplicationFunction, CancellationTokenSource cancellationToken = null)
+        {
+             return ContractHandler.SendRequestAndWaitForReceiptAsync(doApplicationFunction, cancellationToken);
+        }
+
+        public Task<string> DoApplicationRequestAsync(uint x, uint y)
+        {
+            var doApplicationFunction = new DoApplicationFunction();
+                doApplicationFunction.X = x;
+                doApplicationFunction.Y = y;
+            
+             return ContractHandler.SendRequestAsync(doApplicationFunction);
+        }
+
+        public Task<TransactionReceipt> DoApplicationRequestAndWaitForReceiptAsync(uint x, uint y, CancellationTokenSource cancellationToken = null)
+        {
+            var doApplicationFunction = new DoApplicationFunction();
+                doApplicationFunction.X = x;
+                doApplicationFunction.Y = y;
+            
+             return ContractHandler.SendRequestAndWaitForReceiptAsync(doApplicationFunction, cancellationToken);
+        }
+
         public Task<string> EmitEphemeralRecordRequestAsync(EmitEphemeralRecord1Function emitEphemeralRecord1Function)
         {
              return ContractHandler.SendRequestAsync(emitEphemeralRecord1Function);
